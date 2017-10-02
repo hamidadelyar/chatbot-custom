@@ -3,3 +3,52 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.chat-box{
+    background-color: #F5F8FB;
+    padding: 1em;
+    min-height: 500px;
+    max-height: 500px;
+    overflow: scroll;
+    color: white;
+}
+
+.message{
+    line-height:5em;
+    padding: 25px;
+    position: relative;
+    top: -11px;
+    border-radius: 20px;
+    max-width: 70%;
+}
+
+.user-message .message{
+    background-color: #b2dfdb;
+    margin-right: 10px;
+}
+
+.bot-message .message{
+    background-color: #ffcc80;
+    margin-left: 10px;
+}
+
+.user-message .avatar, .user-message .message{
+    float:right;
+}
+
+.user-message, .bot-message{
+    clear: both;
+}
+
+.user-message .avatar{
+    top: -10px;
+}
+
+.user-message .avatar, .user-message .message{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.user-message .message{
+    line-height: 1em;
+}
