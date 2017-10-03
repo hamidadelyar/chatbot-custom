@@ -29,7 +29,7 @@ const Message = (props) => {
     };
 
     return(
-        <div className={messageClassName(props.message.isSenderUser)}>
+        <div className={messageClassName(props.message.isSenderUser)} >
             <img alt="avatar" className="avatar" src={getAvatar(props.message.isSenderUser)} />
             <span className="message">{props.message.message_content}</span>
         </div>
@@ -77,12 +77,15 @@ class Form extends React.Component{
     getKeyAPI = () => { return "8c2b175413dd2972869c720c5832be5f"; };
 
     submitBotMessage = (message_content) => {
-        this.props.submitMessage(
-            {
-                message_content: message_content,
-                isSenderUser: false
-            }
-        );
+        setTimeout(() => {
+            this.props.submitMessage(
+                {
+                    message_content: message_content,
+                    isSenderUser: false
+                }
+            );
+        }, 1000);
+
     };
 
     submitUserMessage = (message_content) => {
@@ -292,8 +295,6 @@ class ChatApp extends React.Component{
     // updates the messages state with a message
     // used by the form and the bot
     addMessage = (message) => {
-        //console.log(message);
-
         this.setState(prevState => ({
             messages: prevState.messages.concat({
                 message_content: message.message_content,
