@@ -102,6 +102,13 @@ class Form extends React.Component{
         this.submitBotMessage("Try asking me something like 'what rating is: Jack Reacher?'");
     };
 
+    presentUserManual = () => {
+        this.submitBotMessage("Here are a list of things that you can ask me");
+        this.submitBotMessage("What genre is this movie: [movie name goes here]");
+        this.submitBotMessage("What rating is this movie: [movie name goes here]");
+        this.submitBotMessage("What movies are similar to: [movie name goes here]");
+    };
+
     // get movie name from user input
     getMovieName = (userInput)=> {
         //userInput = "what rating is the movie: Lord of the rings, the return of the king";
@@ -111,6 +118,7 @@ class Form extends React.Component{
         try{
             movie = encodeURI(res[1].toString().trim());
         }catch (e){
+            console.log("could not figure out movie from user input");
             this.userPromptWithFormat();
         }
         return movie;
@@ -129,6 +137,9 @@ class Form extends React.Component{
                 requestType = "genre";
             }else if(res[0].toString().toLowerCase().indexOf("similar") >= 0 || res[0].toString().toLowerCase().indexOf("like") >= 0 ){
                 requestType = "similar";
+            }else if(res[0].toString().toLowerCase().indexOf("help") >= 0 || (res[0].toString().toLowerCase().indexOf("what") >= 0 &&
+                (res[0].toString().toLowerCase().indexOf("ask") >= 0 || res[0].toString().toLowerCase().indexOf("say") >= 0))){
+                requestType = "help";
             }
         }catch(e){
             console.log("User input not in correct format, could not find request type in the string");
@@ -208,7 +219,7 @@ class Form extends React.Component{
                             console.log(respSimilar.data.results);
                             this.submitBotMessage(`I will list three of the most similar movies to ${resp.data.results[0].title}`);
                             for(let i=0; i<3; i++){
-                                this.submitBotMessage(`${respSimilar.data.results[i].title} (${parseInt(resp.data.results[0].release_date, 10)}) is rated ${respSimilar.data.results[i].vote_average}`)
+                                this.submitBotMessage(`${i+1} - ${respSimilar.data.results[i].title} (${parseInt(resp.data.results[0].release_date, 10)}) is rated ${respSimilar.data.results[i].vote_average}`)
                             }
                         })
 
@@ -231,18 +242,24 @@ class Form extends React.Component{
         // submits the message data
         this.submitUserMessage(this.state.messageInput);
 
-        // get movie name from user input and encode into URI
-        const movieName = this.getMovieName(this.state.messageInput).toString();
         const requestType = this.getRequestType(this.state.messageInput);
 
-        // determine user request type to fulfil
-        if(requestType === "rating"){
-            this.getMovieRatingFromAPI(movieName);
-        }else if(requestType === "genre"){
-            this.getMovieGenreFromAPI(movieName);
-        }else if(requestType === "similar"){
-            this.getSimilarMovieFromAPI(movieName);
+        if(requestType === "help"){
+            this.presentUserManual();
+        }else{
+            // get movie name from user input and encode into URI
+            const movieName = this.getMovieName(this.state.messageInput).toString();
+
+            // determine user request type to fulfil if the movie name has been found
+            if(requestType === "rating" && movieName !== ""){
+                this.getMovieRatingFromAPI(movieName);
+            }else if(requestType === "genre" && movieName !== ""){
+                this.getMovieGenreFromAPI(movieName);
+            }else if(requestType === "similar" && movieName !== ""){
+                this.getSimilarMovieFromAPI(movieName);
+            }
         }
+
 
 
         // Clear text input after message has been sent

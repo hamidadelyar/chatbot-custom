@@ -1,7 +1,11 @@
+/* ==========================================================================
+   General
+   ========================================================================== */
+
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
     background-color: #F5F8FB;
 }
 
@@ -14,12 +18,31 @@ body {
     color: white;
 }
 
+.chat-app{
+    position: relative;
+    margin-top: 50px !important;
+    padding: 0 20px;
+
+}
+
+
+/* ==========================================================================
+   Messages and Avatar
+   ========================================================================== */
+
 .message{
-    line-height:5em;
+    line-height:1em;
     padding: 25px;
     position: relative;
     top: -11px;
     max-width: 70%;
+    /* allow long words to break into next line */
+    word-wrap: break-word;
+    -o-transition: ease all .5s;
+    -ms-transition: ease all .5s;
+    -moz-transition: ease all .5s;
+    -webkit-transition: ease all .5s;
+    transition: ease all .5s;
 }
 
 .user-message .message{
@@ -33,7 +56,10 @@ body {
     background-color: #ffcc80;
     margin-left: 10px;
     border-radius: 20px 20px 20px 0;
+}
 
+.bot-message .avatar, .bot-message .message{
+    float: left;
 }
 
 .user-message .avatar, .user-message .message{
@@ -69,28 +95,43 @@ body {
     top: 18px;
 }
 
-/* input bar */
+.bot-message{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+/*=============== Large screen ===============*/
+
+
+@media screen and (min-width: 993px) {
+    .avatar{
+        top: 5px;
+    }
+
+}
+
+
+/* ==========================================================================
+   Text Input Bar
+   ========================================================================== */
+
 
 form.form-user-input{
     position: relative;
     width: 100%;
 }
 
-.chat-app{
-    position: relative;
-    margin-top: 50px !important;
-    /*border-top: 1px solid black;*/
-    /*border-left: 1px solid black;*/
-    /*border-right: 1px solid black;*/
-    padding: 0 20px;
-
-}
 
 input[type=text].text-user-input:not(.browser-default){
-    /*width: 80%;*/
     margin-bottom: 0;
-    /*border-top: 2px solid black;*/
-    padding: 1em;
+    padding: 1em 0 1em 1em;
     background-color: white;
+    -o-transition: ease all .5s;
+    -ms-transition: ease all .5s;
+    -moz-transition: ease all .5s;
+    -webkit-transition: ease all .5s;
+    transition: ease all .5s;
 }
+
+
 
