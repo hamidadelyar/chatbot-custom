@@ -40,19 +40,6 @@ const Message = (props) => {
 Gets its data from the messages variable on the App state.
  */
 class Chat extends React.Component{
-    //scrollToBottom = () => {
-    //    const node = ReactDOM.findDOMNode(this.messagesEnd);
-    //    node.scrollIntoView({ behavior: "smooth" });
-    //}
-    //
-    //componentDidMount() {
-    //    this.scrollToBottom();
-    //}
-    //
-    //componentDidUpdate() {
-    //    this.scrollToBottom();
-    //}
-
     render(){
         return(
             <div id="chat-box" className="chat-box" ref={(div) => {this.chatBox = div;}}>
@@ -62,8 +49,6 @@ class Chat extends React.Component{
                 )}
             </div>
         );
-
-
     };
 
     /* function to scroll to bottom of the chatbox */
@@ -78,8 +63,7 @@ class Chat extends React.Component{
     componentDidUpdate() {
         this.scrollToBottom();
     }
-
-};
+}
 
 /*
 * This will submit a message that will appear in the chat.
@@ -129,18 +113,31 @@ class Form extends React.Component{
         return requestType;
     };
 
+    submitBotMessage = (message_content) => {
+        this.props.submitMessage(
+            {
+                message_content: message_content,
+                isSenderUser: false
+            }
+        );
+    };
+
+    submitUserMessage = (message_content) => {
+        this.props.submitMessage(
+            {
+                message_content: message_content,
+                isSenderUser: true
+            }
+        );
+    };
+
     handleSubmit = (event) => {
         //prevent default html submit
         event.preventDefault();
         //https://api.themoviedb.org/3/search/movie?api_key=8c2b175413dd2972869c720c5832be5f&query=Jack+Reacher
 
         // submits the message data
-        this.props.addMessage(
-            {
-                message_content: this.state.messageInput,
-                isSenderUser: true
-            }
-        );
+        this.submitUserMessage(this.state.messageInput);
 
         // get movie name from user input and encode into URI
         const movieName = this.getMovieName(this.state.messageInput).toString();
@@ -148,7 +145,6 @@ class Form extends React.Component{
 
         // if a movie name has been retrieved, then proceed to fulfill the request
         if(movieName != ""){
-            console.log(`https://api.themoviedb.org/3/search/movie?api_key=8c2b175413dd2972869c720c5832be5f&query=${movieName}`);
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=8c2b175413dd2972869c720c5832be5f&query=${movieName}`)
                 .then(resp => {
                     console.log(resp.data.results[0]);
@@ -167,29 +163,13 @@ class Form extends React.Component{
                         botResponseMsg = "I'm sorry, I was not able to find anything!"
                     }
                     // the bots response message
-                    this.props.addMessage(
-                        {
-                            message_content: botResponseMsg,
-                            isSenderUser: false
-                        }
-                    );
+                    this.submitBotMessage(botResponseMsg);
                 });
         }else{
-            // the bots response message
-            this.props.addMessage(
-                {
-                    message_content: "I'm sorry, I do not understand what movie you wanted me to find.",
-                    isSenderUser: false
-                }
-            );
-
-            // the bots response message
-            this.props.addMessage(
-                {
-                    message_content: "Try adjusting your sentence format to this 'what rating is this: [movie name]'",
-                    isSenderUser: false
-                }
-            );
+            // could not understand the user message input
+            // bots response message
+            this.submitBotMessage("I'm sorry, I do not understand what movie you wanted me to find.");
+            this.submitBotMessage("Try adjusting your sentence format to this 'what rating is this: [movie name]'");
         }
 
         // Clear text input after message has been sent
@@ -237,7 +217,7 @@ class ChatApp extends React.Component{
             <div className="container chat-app">
                 <Chat messages={this.state.messages} />
                 {/* Must pass ref to the function that changes the state to the Form object */}
-                <Form addMessage={this.addMessage}/>
+                <Form submitMessage={this.addMessage}/>
             </div>
         );
     };
