@@ -30,7 +30,7 @@ const Message = (props) => {
 
     return(
         <div className={messageClassName(props.message.isSenderUser)}>
-            <img className="avatar" src={getAvatar(props.message.isSenderUser)} />
+            <img alt="avatar" className="avatar" src={getAvatar(props.message.isSenderUser)} />
             <span className="message">{props.message.message_content}</span>
         </div>
     );
@@ -94,24 +94,31 @@ class Form extends React.Component{
         );
     };
 
+    // reminds the user of questions he/she can ask the bot
+    userPromptWithFormat = () => {
+        // not in correct format to be able to find a movie
+        console.log("User input not in correct format, could not find movie in the string");
+        this.submitBotMessage("I'm sorry, I don't understand what movie you wanted me to find.");
+        this.submitBotMessage("Try asking me something like 'what rating is: Jack Reacher?'");
+    };
+
     // get movie name from user input
     getMovieName = (userInput)=> {
         //userInput = "what rating is the movie: Lord of the rings, the return of the king";
-        const res = userInput.toString().split("is");
+        const res = userInput.toString().split(":");
         // Get the movie title from user input
         var movie = "";
         try{
             movie = encodeURI(res[1].toString().trim());
         }catch (e){
-            // not in correct format to be able to find a movie
-            console.log("User input not in correct format, could not find movie in the string")
+            this.userPromptWithFormat();
         }
         return movie;
     };
 
     // get request type i.e. Rating or Genre?
     getRequestType = (userInput) => {
-        const res = userInput.toString().split("is");
+        const res = userInput.toString().split(":");
         var requestType = "";
         try{
             // res[0] is first part of the users input (split by ':')
@@ -120,9 +127,12 @@ class Form extends React.Component{
                 requestType = "rating";
             }else if(res[0].toString().toLowerCase().indexOf("genre") >= 0){
                 requestType = "genre";
+            }else if(res[0].toString().toLowerCase().indexOf("similar") >= 0 || res[0].toString().toLowerCase().indexOf("like") >= 0 ){
+                requestType = "similar";
             }
         }catch(e){
-            console.log("User input not in correct format, could not find request type in the string")
+            console.log("User input not in correct format, could not find request type in the string");
+            this.userPromptWithFormat();
         }
         return requestType;
     };
@@ -137,17 +147,15 @@ class Form extends React.Component{
 
                     // try parsing the returned API data
                     try{
-                        this.submitBotMessage(`The rating for ${resp.data.results[0].title} (${parseInt(resp.data.results[0].release_date)}) is ${resp.data.results[0].vote_average}`);
+                        this.submitBotMessage(`The rating for ${resp.data.results[0].title} (${parseInt(resp.data.results[0].release_date, 10)}) is ${resp.data.results[0].vote_average}`);
                     }catch(e){
                         console.log("Could not find requested movie in the API");
-                        this.submitBotMessage("I'm sorry, I was not able to find anything!");
+                        this.submitBotMessage("I'm sorry, I was not able to find anything matching that movie!");
                     }
                 });
         }else{
             // could not understand the user message input
-            // bots response message
-            this.submitBotMessage("I'm sorry, I do not understand what movie you wanted me to find.");
-            this.submitBotMessage("Try adjusting your sentence format to this 'what rating is this: [movie name]'");
+            this.userPromptWithFormat();
         }
     };
 
@@ -166,13 +174,10 @@ class Form extends React.Component{
                     // try parsing the returned API data
                     try{
                         movieID = resp.data.results[0].id;
-                        var movieGenre = "";
                         console.log(movieID)
                         axios.get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${this.getKeyAPI()}&language=en-US`).then(respDetails => {
                             console.log(respDetails.data.genres[0].name);
-                            movieGenre = respDetails.data.genres[0].name;
-                            console.log(movieGenre);
-                            this.submitBotMessage(`The genre for ${resp.data.results[0].title} (${parseInt(resp.data.results[0].release_date)}) is ${respDetails.data.genres[0].name}`);
+                            this.submitBotMessage(`The genre for ${resp.data.results[0].title} (${parseInt(resp.data.results[0].release_date, 10)}) is ${respDetails.data.genres[0].name}`);
                         })
 
                     }catch(e){
@@ -182,15 +187,40 @@ class Form extends React.Component{
                 });
         }else{
             // could not understand the user message input
-            // bots response message
-            this.submitBotMessage("I'm sorry, I do not understand what movie you wanted me to find.");
-            this.submitBotMessage("Try adjusting your sentence format to this 'what rating is this: [movie name]'");
+            this.userPromptWithFormat();
         }
     };
 
     getSimilarMovieFromAPI = (movieName) => {
         //https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US&page=1
+        // if a movie name has been retrieved, then proceed to fulfill the request
+        if(movieName !== ""){
+            var movieID = 0;
+            axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.getKeyAPI()}&query=${movieName}`)
+                .then(resp => {
+                    console.log(resp.data.results[0]);
+                    this.submitBotMessage("One second, let me check...");
 
+                    // try parsing the returned API data
+                    try{
+                        movieID = resp.data.results[0].id;
+                        axios.get(`https://api.themoviedb.org/3/movie/${movieID}/similar?api_key=${this.getKeyAPI()}&language=en-US&page=1`).then(respSimilar => {
+                            console.log(respSimilar.data.results);
+                            this.submitBotMessage(`I will list three of the most similar movies to ${resp.data.results[0].title}`);
+                            for(let i=0; i<3; i++){
+                                this.submitBotMessage(`${respSimilar.data.results[i].title} (${parseInt(resp.data.results[0].release_date, 10)}) is rated ${respSimilar.data.results[i].vote_average}`)
+                            }
+                        })
+
+                    }catch(e){
+                        console.log("Could not find requested movie in the API");
+                        this.submitBotMessage("I'm sorry, I was not able to find anything!");
+                    }
+                });
+        }else{
+            // could not understand the user message input
+            this.userPromptWithFormat();
+        }
     };
 
     handleSubmit = (event) => {
@@ -210,6 +240,8 @@ class Form extends React.Component{
             this.getMovieRatingFromAPI(movieName);
         }else if(requestType === "genre"){
             this.getMovieGenreFromAPI(movieName);
+        }else if(requestType === "similar"){
+            this.getSimilarMovieFromAPI(movieName);
         }
 
 

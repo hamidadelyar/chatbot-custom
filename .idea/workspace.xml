@@ -46,13 +46,13 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.89481944">
-              <caret line="193" column="6" selection-start-line="193" selection-start-column="6" selection-end-line="193" selection-end-column="6" />
+            <state vertical-scroll-proportion="1.8398744">
+              <caret line="210" column="141" selection-start-line="210" selection-start-column="141" selection-end-line="210" selection-end-column="141" />
               <folding>
-                <marker date="1507034812000" expanded="true" signature="8324:8683" placeholder="..." />
-                <marker date="1507034812000" expanded="true" signature="8360:8455" placeholder="..." />
-                <marker date="1507034812000" expanded="true" signature="9375:9602" placeholder="..." />
-                <marker date="1507034812000" expanded="true" signature="9583:9596" placeholder="..." />
+                <marker date="1507036005000" expanded="true" signature="10009:10368" placeholder="..." />
+                <marker date="1507036005000" expanded="true" signature="10045:10140" placeholder="..." />
+                <marker date="1507036005000" expanded="true" signature="11060:11287" placeholder="..." />
+                <marker date="1507036005000" expanded="true" signature="11268:11281" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -265,13 +265,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.89481944">
-          <caret line="193" column="6" selection-start-line="193" selection-start-column="6" selection-end-line="193" selection-end-column="6" />
+        <state vertical-scroll-proportion="1.8398744">
+          <caret line="210" column="141" selection-start-line="210" selection-start-column="141" selection-end-line="210" selection-end-column="141" />
           <folding>
-            <marker date="1507034812000" expanded="true" signature="8324:8683" placeholder="..." />
-            <marker date="1507034812000" expanded="true" signature="8360:8455" placeholder="..." />
-            <marker date="1507034812000" expanded="true" signature="9375:9602" placeholder="..." />
-            <marker date="1507034812000" expanded="true" signature="9583:9596" placeholder="..." />
+            <marker date="1507036005000" expanded="true" signature="10009:10368" placeholder="..." />
+            <marker date="1507036005000" expanded="true" signature="10045:10140" placeholder="..." />
+            <marker date="1507036005000" expanded="true" signature="11060:11287" placeholder="..." />
+            <marker date="1507036005000" expanded="true" signature="11268:11281" placeholder="..." />
           </folding>
         </state>
       </provider>
