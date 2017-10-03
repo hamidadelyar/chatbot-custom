@@ -84,7 +84,7 @@ class Form extends React.Component{
                     isSenderUser: false
                 }
             );
-        }, 1000);
+        }, 1500);
 
     };
 
