@@ -46,9 +46,14 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6138147">
-              <caret line="125" column="33" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
-              <folding />
+            <state vertical-scroll-proportion="0.89481944">
+              <caret line="193" column="6" selection-start-line="193" selection-start-column="6" selection-end-line="193" selection-end-column="6" />
+              <folding>
+                <marker date="1507034812000" expanded="true" signature="8324:8683" placeholder="..." />
+                <marker date="1507034812000" expanded="true" signature="8360:8455" placeholder="..." />
+                <marker date="1507034812000" expanded="true" signature="9375:9602" placeholder="..." />
+                <marker date="1507034812000" expanded="true" signature="9583:9596" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,9 +90,9 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="432" />
+    <option name="x" value="44" />
     <option name="y" value="44" />
-    <option name="width" value="1008" />
+    <option name="width" value="1396" />
     <option name="height" value="761" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -202,10 +207,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="432" y="44" width="1008" height="761" extended-state="0" />
+    <frame x="44" y="44" width="1396" height="761" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19246031" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13896848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -228,7 +233,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -258,9 +265,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6138147">
-          <caret line="125" column="33" selection-start-line="125" selection-start-column="33" selection-end-line="125" selection-end-column="33" />
-          <folding />
+        <state vertical-scroll-proportion="0.89481944">
+          <caret line="193" column="6" selection-start-line="193" selection-start-column="6" selection-end-line="193" selection-end-column="6" />
+          <folding>
+            <marker date="1507034812000" expanded="true" signature="8324:8683" placeholder="..." />
+            <marker date="1507034812000" expanded="true" signature="8360:8455" placeholder="..." />
+            <marker date="1507034812000" expanded="true" signature="9375:9602" placeholder="..." />
+            <marker date="1507034812000" expanded="true" signature="9583:9596" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
