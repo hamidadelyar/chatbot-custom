@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46ce4ef8-27a5-4878-b8a4-6450dc38b513" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
     </list>
     <ignored path="chatbot-custom.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,26 +23,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-47.77778">
-              <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.85871273">
+              <caret line="315" column="0" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
               <folding>
-                <marker date="1507051876000" expanded="true" signature="11066:11425" placeholder="..." />
-                <marker date="1507051876000" expanded="true" signature="11102:11197" placeholder="..." />
-                <marker date="1507051876000" expanded="true" signature="12084:12311" placeholder="..." />
-                <marker date="1507051876000" expanded="true" signature="12292:12305" placeholder="..." />
+                <marker date="1507052610000" expanded="true" signature="11255:11556" placeholder="..." />
+                <marker date="1507052610000" expanded="true" signature="11291:11386" placeholder="..." />
+                <marker date="1507052610000" expanded="true" signature="12214:12477" placeholder="..." />
+                <marker date="1507052610000" expanded="true" signature="12458:12471" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.32967034">
+            <state vertical-scroll-proportion="-7.7777777">
               <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.75">
+              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -67,8 +77,8 @@
         <option value="$PROJECT_DIR$/src/ChatBox.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/index.js" />
       </list>
     </option>
   </component>
@@ -247,30 +257,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2578125">
-          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        <state vertical-scroll-proportion="-8.75">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.7777777">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-47.77778">
-          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.85871273">
+          <caret line="315" column="0" selection-start-line="315" selection-start-column="0" selection-end-line="315" selection-end-column="0" />
           <folding>
-            <marker date="1507051876000" expanded="true" signature="11066:11425" placeholder="..." />
-            <marker date="1507051876000" expanded="true" signature="11102:11197" placeholder="..." />
-            <marker date="1507051876000" expanded="true" signature="12084:12311" placeholder="..." />
-            <marker date="1507051876000" expanded="true" signature="12292:12305" placeholder="..." />
+            <marker date="1507052610000" expanded="true" signature="11255:11556" placeholder="..." />
+            <marker date="1507052610000" expanded="true" signature="11291:11386" placeholder="..." />
+            <marker date="1507052610000" expanded="true" signature="12214:12477" placeholder="..." />
+            <marker date="1507052610000" expanded="true" signature="12458:12471" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32967034">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>

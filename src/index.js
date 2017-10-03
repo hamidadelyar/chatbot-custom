@@ -127,13 +127,13 @@ class Form extends React.Component{
         return movie;
     };
 
-    // get request type i.e. Rating or Genre?
+    // get request type i.e. Rating, Genre or Similar?
     getRequestType = (userInput) => {
         const res = userInput.toString().split(":");
         var requestType = "";
         try{
-            // res[0] is first part of the users input (split by ':')
-            // if it contains rating, then
+            // res[0] is left hand side of the users input sentence (split by ':')
+            // Determine what request the user wants the bot to fulfill
             if(res[0].toString().toLowerCase().indexOf("rating") >= 0){
                 requestType = "rating";
             }else if(res[0].toString().toLowerCase().indexOf("genre") >= 0){
@@ -173,8 +173,6 @@ class Form extends React.Component{
         }
     };
 
-
-
     // performs two api requests to get the genre
     getMovieGenreFromAPI = (movieName) => {
         // if a movie name has been retrieved, then proceed to fulfill the request
@@ -193,7 +191,6 @@ class Form extends React.Component{
                             console.log(respDetails.data.genres[0].name);
                             this.submitBotMessage(`The genre for ${resp.data.results[0].title} (${parseInt(resp.data.results[0].release_date, 10)}) is ${respDetails.data.genres[0].name}`);
                         })
-
                     }catch(e){
                         console.log("Could not find requested movie in the API");
                         this.submitBotMessage("I'm sorry, I was not able to find anything!");
@@ -237,20 +234,22 @@ class Form extends React.Component{
         }
     };
 
+    // this function is run every time the user submits a message using the text input bar
+    // figures out what the bot's response the user's input should be
     handleSubmit = (event) => {
         //prevent default html submit
         event.preventDefault();
-        //https://api.themoviedb.org/3/search/movie?api_key=8c2b175413dd2972869c720c5832be5f&query=Jack+Reacher
 
         // submits the message data
         this.submitUserMessage(this.state.messageInput);
-
+        // find what the user wants the bot to do
         const requestType = this.getRequestType(this.state.messageInput);
 
         if(requestType === "help"){
+            // tell user what he/she can ask of the bot
             this.presentUserManual();
         }else{
-            // get movie name from user input and encode into URI
+            // get movie name from user input sentence
             const movieName = this.getMovieName(this.state.messageInput).toString();
 
             // determine user request type to fulfil if the movie name has been found
@@ -263,8 +262,6 @@ class Form extends React.Component{
             }
         }
 
-
-
         // Clear text input after message has been sent
         this.setState({ messageInput: '' });
     };
@@ -276,7 +273,6 @@ class Form extends React.Component{
                        value={this.state.messageInput}
                        onChange={(event) =>  this.setState({ messageInput: event.target.value })}
                        placeholder="Ask me anything!" required className="text-user-input"/>
-                {/*<button type="submit">Send</button>*/}
             </form>
         );
     }
@@ -288,7 +284,7 @@ class ChatApp extends React.Component{
             {
                 message_content: "Hi, what can I help you with?",
                 isSenderUser: false
-            },
+            }
         ]
     };
 
@@ -307,15 +303,13 @@ class ChatApp extends React.Component{
         return(
             <div className="container chat-app">
                 <Chat messages={this.state.messages} />
-                {/* Must pass ref to the function that changes the state to the Form object */}
+                {/* Must pass reference (cannot pass actual function) to the function that changes the state to the Form object */}
                 <Form submitMessage={this.addMessage}/>
             </div>
         );
     };
-};
-
+}
 
 ReactDOM.render(<ChatApp />, document.getElementById('root'));
-
 
 registerServiceWorker();
