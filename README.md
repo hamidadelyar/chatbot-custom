@@ -3,8 +3,10 @@
 
 ### How to run
 
-- In order to run this React.js app, you will need to first install node. You can do this through the following link: https://nodejs.org/en/download/
-- Once node is installed, in the terminal (if on mac) or through powershell/cmd navigate inside of the folder 'chatbot-cusom' and run the command 'npm start'
+In order to run this React.js app, you will need to first install node. You can do this through the following link: https://nodejs.org/en/download/
+Once node is installed, in the terminal (if on mac) or through powershell/cmd navigate inside of the folder 'chatbot-cusom' and run the command:
+
+### `npm start`
 
 ### Capabilities of the Chatbot
 The implemented chatbot has 3 distinct capabilities:
